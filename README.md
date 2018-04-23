@@ -1,0 +1,2 @@
+# TwitchDonateToChatroom
+可以把歐付寶的斗內資訊傳送到圖奇聊天室中
