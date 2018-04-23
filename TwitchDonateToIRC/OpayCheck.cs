@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Timers;
+using System.Windows;
 using Newtonsoft.Json;
 
 namespace TwitchDonateToIRC
@@ -25,21 +27,30 @@ namespace TwitchDonateToIRC
 
         public void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            request = (HttpWebRequest)WebRequest.Create(url + id);
-            request.Accept = "application/json";
-            request.ContentType = "application/json; charset=utf-8";
-            request.ContentLength = 0;
-
-            using(StreamReader sr = new StreamReader(request.GetResponse().GetResponseStream()))
+            try
             {
-                if (sr.ReadToEnd().Length > 10)
+                request = (HttpWebRequest)WebRequest.Create(url + id);
+                request.Accept = "application/json";
+                request.ContentType = "application/json; charset=utf-8";
+                request.ContentLength = 0;
+                request.Method = "POST";
+
+                using (StreamReader sr = new StreamReader(request.GetResponse().GetResponseStream()))
                 {
-                    List<Member> donates = JsonConvert.DeserializeObject<List<Member>>(sr.ReadToEnd());
-                    DonateProcess(donates);
+                    string text = sr.ReadToEnd();
+                    if (text.Length > 10)
+                    {
+                        List<Member> donates = JsonConvert.DeserializeObject<List<Member>>(text);
+                        DonateProcess(donates);
+                    }
+                    sr.Close();
                 }
-                sr.Close();
-            }
         }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+}
 
         public void DonateProcess(List<Member> lists)
         {
@@ -47,7 +58,7 @@ namespace TwitchDonateToIRC
             {
                 if (DonatesFlag < item.donateid)
                 {
-                    irc.client.SendMessage(channelname, "贊助者姓名: " + item.amount + "訊息: " + item.msg);
+                    irc.client.SendMessage(channelname, "/me 贊助者姓名: " + item.name + " 訊息: " + item.msg);
                     DonatesFlag = item.donateid;
                 }         
             }

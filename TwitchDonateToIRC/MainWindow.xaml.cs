@@ -19,13 +19,25 @@ namespace TwitchDonateToIRC
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (opayid.Text.Length < 1)
+            {
                 MessageBox.Show("歐付寶 ID 沒填!!");
+                return;
+            }
             else if (channelname.Text.Length < 1)
+            {
                 MessageBox.Show("頻道 ID 沒填!!");
+                return;
+            }      
             else if (username.Text.Length < 1)
+            {
                 MessageBox.Show("Twitch ID 沒填!!");
+                return;
+            }
             else if (twitchoauth.Text.Length < 1)
+            {
                 MessageBox.Show("OAth沒填!!");
+                return;
+            }          
             try
             {
                 OpayCheck opay = new OpayCheck(opayid.Text, username.Text, twitchoauth.Text, channelname.Text);
@@ -37,12 +49,12 @@ namespace TwitchDonateToIRC
                 };
                 timer.Elapsed += opay.Timer_Elapsed;
                 state.Text += "歐付寶頁面擷取中...";
-            }
+        }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
+}
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
