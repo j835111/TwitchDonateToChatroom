@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitchDonateToIRC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="364" Width="359">
+        Title="DonateToTwitchChatroom" Height="364" Width="359">
     <Grid Margin="0,0,-7,2.667">
         <TextBox Name="opayid" HorizontalAlignment="Left" Height="30" Margin="163,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" RenderTransformOrigin="1.633,0.5" FontSize="16"/>
         <Label Content="輸入歐付寶ID:" HorizontalAlignment="Left" Margin="34,36,0,0" VerticalAlignment="Top" Height="30" FontSize="16" RenderTransformOrigin="0.32,1.267" Width="122"/>
@@ -18,6 +18,7 @@
         <TextBox Name="channelname" HorizontalAlignment="Left" Height="30" Margin="163,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" RenderTransformOrigin="1.633,0.5" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="90,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.882,-0.276" Width="193" Height="27" TextDecorations="{x:Null}" FontSize="16"><Run Text=""/><Hyperlink Click="Hyperlink_Click" NavigateUri="https://twitchapps.com/tmi/">Twitch OAuth點這裡取得</Hyperlink><LineBreak/><Run/></TextBlock>
         <TextBlock Name="state" HorizontalAlignment="Left" Margin="43,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="156"/>
+        <Button Content="設定文字" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="0.5,0.5" Height="22" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
