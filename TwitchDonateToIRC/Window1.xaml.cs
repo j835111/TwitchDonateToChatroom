@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TwitchDonateToIRC
 {
     /// <summary>
-    /// Page1.xaml 的互動邏輯
+    /// Window1.xaml 的互動邏輯
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Window1 : Window
     {
-        public Page1()
+        public Window1()
         {
             InitializeComponent();
         }
