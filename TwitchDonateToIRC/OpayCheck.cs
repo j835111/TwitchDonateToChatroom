@@ -46,14 +46,14 @@ namespace TwitchDonateToIRC
                     }
                     sr.Close();
                 }
-        }
+            }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-}
+        }
 
-        public void DonateProcess(List<Member> lists)
+        private void DonateProcess(List<Member> lists)
         {
             foreach(var item in lists)
             {
