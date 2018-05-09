@@ -47,7 +47,7 @@ namespace TwitchDonateToIRC
                     sr.Close();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -55,14 +55,25 @@ namespace TwitchDonateToIRC
 
         private void DonateProcess(List<Member> lists)
         {
-            foreach(var item in lists)
+            foreach (var item in lists)
             {
                 if (DonatesFlag < item.donateid)
                 {
-                    irc.client.SendMessage(channelname, $""+Message);
+                    irc.client.SendMessage(channelname, $"" + Message);
+                    Log(item);
                     DonatesFlag = item.donateid;
-                }         
+                }
             }
+        }
+
+        private void Log(Member item)
+        {
+            FileStream fs = new FileStream("log.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs);
+            string text = $"{DateTime.Now} {item.donateid} {item.name} {item.amount} {item.msg}";
+            sw.WriteLine(text);
+            sw.Close();
+            fs.Close();
         }
     }
     class Member
