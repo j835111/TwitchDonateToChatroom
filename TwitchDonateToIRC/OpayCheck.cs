@@ -12,7 +12,7 @@ namespace TwitchDonateToIRC
     {
         HttpWebRequest request;
         TwitchIRC irc;
-        public static string Message { get; set; } = "/me 贊助者姓名: {item.name} 訊息: {item.msg}";
+        //public static string Message { get; set; } = "/me 贊助者姓名: {item.name} 訊息: {item.msg}";
         private string url = "https://payment.opay.tw/Broadcaster/CheckDonate/";
         private string id;
         private int DonatesFlag { get; set; } = 0;
@@ -59,7 +59,7 @@ namespace TwitchDonateToIRC
             {
                 if (DonatesFlag < item.donateid)
                 {
-                    irc.client.SendMessage(channelname, $"" + Message);
+                    irc.client.SendMessage(channelname, $"/me 贊助者姓名: {item.name} 訊息: {item.msg}");
                     Log(item);
                     DonatesFlag = item.donateid;
                 }
