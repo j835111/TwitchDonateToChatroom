@@ -12,7 +12,6 @@ namespace TwitchDonateToIRC
     {
         HttpWebRequest request;
         TwitchIRC irc;
-        //public static string Message { get; set; } = "/me 贊助者姓名: {item.name} 訊息: {item.msg}";
         private string url = "https://payment.opay.tw/Broadcaster/CheckDonate/";
         private string id;
         private int DonatesFlag { get; set; } = 0;
@@ -59,7 +58,7 @@ namespace TwitchDonateToIRC
             {
                 if (DonatesFlag < item.donateid)
                 {
-                    irc.client.SendMessage(channelname, $"/me 贊助者姓名: {item.name} 訊息: {item.msg}");
+                    irc.client.SendMessage(channelname, $"/me {item.name} 丟了{item.amount}到許願池向阿米女神許願: {item.msg}");
                     Log(item);
                     DonatesFlag = item.donateid;
                 }
@@ -68,12 +67,11 @@ namespace TwitchDonateToIRC
 
         private void Log(Member item)
         {
-            FileStream fs = new FileStream("log.txt", FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs);
+            StreamWriter sw = new StreamWriter(@"log.txt", true);
             string text = $"{DateTime.Now} {item.donateid} {item.name} {item.amount} {item.msg}";
             sw.WriteLine(text);
+            sw.Flush();
             sw.Close();
-            fs.Close();
         }
     }
     class Member
