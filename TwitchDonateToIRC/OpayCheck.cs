@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Threading;
 using System.Timers;
 using System.Windows;
 using Newtonsoft.Json;
@@ -59,8 +60,9 @@ namespace TwitchDonateToIRC
                 if (DonatesFlag < item.donateid)
                 {
                     irc.client.SendMessage(channelname, $"/me {item.name} 丟了{item.amount}到許願池向阿米女神許願: {item.msg}");
-                    Log(item);
+                    //Log(item);
                     DonatesFlag = item.donateid;
+                    Thread.Sleep(500);
                 }
             }
         }
