@@ -6,6 +6,7 @@ using System.Threading;
 using System.Timers;
 using System.Windows;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TwitchDonateToIRC
 {
@@ -39,9 +40,10 @@ namespace TwitchDonateToIRC
                 using (StreamReader sr = new StreamReader(request.GetResponse().GetResponseStream()))
                 {
                     string text = sr.ReadToEnd();
-                    if (text.Length > 10)
+                    JObject list = (JObject)JsonConvert.DeserializeObject(text);
+                    if (list["lstDonate"].ToString().Length > 10)
                     {
-                        List<Member> donates = JsonConvert.DeserializeObject<List<Member>>(text);
+                        List<Member> donates = JsonConvert.DeserializeObject<List<Member>>(list["lstDonate"].ToString());
                         DonateProcess(donates);
                     }
                     sr.Close();
