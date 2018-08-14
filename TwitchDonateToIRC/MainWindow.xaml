@@ -20,7 +20,7 @@
 		<TextBlock HorizontalAlignment="Left" Margin="144,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.882,-0.276" Width="193" Height="27" TextDecorations="{x:Null}" FontSize="16"><Run Text=""/><Hyperlink Click="Hyperlink_Click" NavigateUri="https://twitchapps.com/tmi/">Twitch OAuth點這裡取得</Hyperlink><LineBreak/><Run/></TextBlock>
 		<TextBlock Name="state" HorizontalAlignment="Left" Margin="43,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="57" Width="156"/>
 		<Label Content="訊息模板:" HorizontalAlignment="Left" Margin="34,214,0,0" VerticalAlignment="Top" Width="129" FontSize="16" RenderTransformOrigin="0.511,-0.933" Height="30"/>
-		<TextBox Name="MessageTemplate" HorizontalAlignment="Left" Height="30" Margin="156,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" RenderTransformOrigin="1.366,0.522" FontSize="16"/>
+		<TextBox Name="messagetemplate" HorizontalAlignment="Left" Height="30" Margin="156,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" RenderTransformOrigin="1.366,0.522" FontSize="16"/>
 		<Button Content="儲存" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" RenderTransformOrigin="2.022,11.638" Height="32" Margin="278,293,0,0" Click="Button_Click_1" FontSize="16"/>
 
 	</Grid>

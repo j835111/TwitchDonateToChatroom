@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Timers;
 using System.Windows;
 using System.Windows.Documents;
@@ -14,6 +16,13 @@ namespace TwitchDonateToIRC
         public MainWindow()
         {
             InitializeComponent();
+
+            DataConfig data = DeserializeBinary();
+            opayid.Text = data.OpayID;
+            channelname.Text = data.ChannelID;
+            username.Text = data.TwitchID;
+            twitchoauth.Text = data.TwitchOauth;
+            messagetemplate.Text = data.MessageTemplate;
         }
         //public static string 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,12 +44,12 @@ namespace TwitchDonateToIRC
             }
             else if (twitchoauth.Text.Length < 1)
             {
-                MessageBox.Show("OAth沒填!!");
+                MessageBox.Show("OAuth沒填!!");
                 return;
             }          
             try
             {
-                OpayCheck opay = new OpayCheck(opayid.Text, username.Text, twitchoauth.Text, channelname.Text);
+                OpayCheck opay = new OpayCheck(opayid.Text, username.Text, twitchoauth.Text, channelname.Text, messagetemplate.Text);
                 state.Text = "Twitch聊天室已連接...\n";
                 Timer timer = new Timer(5000)
                 {
@@ -65,7 +74,22 @@ namespace TwitchDonateToIRC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            FileStream fs = new FileStream("Config", FileMode.Create, FileAccess.Write);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fs, columname);
+            fs.Close();
+            fs.Dispose();
+            columname.Dispose();
+        }
 
+        private DataConfig DeserializeBinary()
+        {
+            FileStream fileStream = new FileStream("Config", FileMode.Open);
+            BinaryFormatter formatter = new BinaryFormatter();
+            DataConfig data = (DataConfig)formatter.Deserialize(fileStream);
+            fileStream.Close();
+            fileStream.Dispose();
+            return data;
         }
     }
 }
