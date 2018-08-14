@@ -62,10 +62,5 @@ namespace TwitchDonateToIRC
             Process.Start(new ProcessStartInfo(source.NavigateUri.AbsoluteUri));
             e.Handled = true;
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
