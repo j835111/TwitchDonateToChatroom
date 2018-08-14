@@ -62,7 +62,7 @@ namespace TwitchDonateToIRC
             {
                 if (DonatesFlag < item.donateid)
                 {
-                    irc.client.SendMessage(channelname, $"/me {item.name}丟了{item.amount}元到許願池向阿米女神許願: {item.msg}");
+                    irc.client.SendMessage(channelname, MessageTemplate.Replace("{name}",item.name).Replace("{amount}",item.amount.ToString()).Replace("{msg}",item.msg));
                     //Log(item);
                     DonatesFlag = item.donateid;
                     Thread.Sleep(500);
