@@ -74,20 +74,28 @@ namespace TwitchDonateToIRC
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DataConfig data = new DataConfig()
+            try
             {
-                ChannelID = channelname.Text,
-                MessageTemplate = messagetemplate.Text,
-                OpayID = opayid.Text,
-                TwitchID = username.Text,
-                TwitchOauth = twitchoauth.Text
-            };
-            FileStream fs = new FileStream("Config", FileMode.Create, FileAccess.Write);
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(fs, data);
-            fs.Close();
-            fs.Dispose();
-            data.Dispose();
+                DataConfig data = new DataConfig()
+                {
+                    ChannelID = channelname.Text,
+                    MessageTemplate = messagetemplate.Text,
+                    OpayID = opayid.Text,
+                    TwitchID = username.Text,
+                    TwitchOauth = twitchoauth.Text
+                };
+                FileStream fs = new FileStream("Config", FileMode.Create, FileAccess.Write);
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fs, data);
+                fs.Close();
+                fs.Dispose();
+                data.Dispose();
+                MessageBox.Show("存檔成功!");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }   
         }
 
         private DataConfig DeserializeBinary()

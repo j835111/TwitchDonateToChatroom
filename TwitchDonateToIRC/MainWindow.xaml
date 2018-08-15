@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitchDonateToIRC"
         mc:Ignorable="d"
-        Title="DonateToTwitchChatroom" Height="425" Width="460
-		">
+        Title="DonateToTwitchChatroom" Height="425" Width="460">
 	<Grid Margin="0,0,0,0">
 		<TextBox Name="opayid" HorizontalAlignment="Left" Height="30" Margin="156,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" RenderTransformOrigin="0.496,0.522" FontSize="16"/>
 		<Label Content="輸入歐付寶ID:" HorizontalAlignment="Left" Margin="34,24,0,0" VerticalAlignment="Top" Height="30" FontSize="16" RenderTransformOrigin="0.32,1.267" Width="122"/>
 		<Label Content="Twitch OAuth:" HorizontalAlignment="Left" Margin="34,160,0,0" VerticalAlignment="Top" Width="129" FontSize="16" RenderTransformOrigin="0.511,-0.933" Height="30"/>
 		<TextBox Name="twitchoauth" HorizontalAlignment="Left" Height="30" Margin="156,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" RenderTransformOrigin="1.366,0.522" FontSize="16"/>
-		<Button Content="確定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" RenderTransformOrigin="2.022,11.638" Height="32" Margin="118,293,0,0" Click="Button_Click" FontSize="16"/>
+		<Button Content="確定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" RenderTransformOrigin="2.022,11.638" Height="32" Margin="112,293,0,0" Click="Button_Click" FontSize="16"/>
 		<Label Content="Twitch ID:" HorizontalAlignment="Left" Margin="34,114,0,0" VerticalAlignment="Top" Width="129" FontSize="16" RenderTransformOrigin="0.511,-0.933" Height="30"/>
 		<TextBox Name="username" HorizontalAlignment="Left" Height="30" Margin="156,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" RenderTransformOrigin="1.633,0.5" FontSize="16"/>
 		<Label Content="頻道 ID:" HorizontalAlignment="Left" Margin="34,70,0,0" VerticalAlignment="Top" Width="129" FontSize="16" RenderTransformOrigin="0.511,-0.933" Height="30"/>
@@ -21,7 +20,7 @@
 		<TextBlock Name="state" HorizontalAlignment="Left" Margin="43,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="57" Width="156"/>
 		<Label Content="訊息模板:" HorizontalAlignment="Left" Margin="34,214,0,0" VerticalAlignment="Top" Width="129" FontSize="16" RenderTransformOrigin="0.511,-0.933" Height="30"/>
 		<TextBox Name="messagetemplate" HorizontalAlignment="Left" Height="30" Margin="156,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" RenderTransformOrigin="1.366,0.522" FontSize="16"/>
-		<Button Content="儲存" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" RenderTransformOrigin="2.022,11.638" Height="32" Margin="270,293,0,0" Click="Button_Click_1" FontSize="16"/>
+		<Button Content="儲存" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" RenderTransformOrigin="2.022,11.638" Height="32" Margin="264,293,0,0" Click="Button_Click_1" FontSize="16"/>
 
 	</Grid>
 </Window>
