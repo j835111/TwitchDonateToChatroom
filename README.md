@@ -1,4 +1,4 @@
-# TwitchDonateToChatroom
+# TwitchDonateToChatRoom
 
 這個小工具可以把歐付寶Donate的相關資訊傳送至聊天室中。
 
