@@ -6,4 +6,4 @@
 --------------------------------------------
 未完
 
-基於TwitchLib所實現的 [TwitchLib](https://github.com/TwitchLib/TwitchLib)
+基於[TwitchLib](https://github.com/TwitchLib/TwitchLib)所實現的
