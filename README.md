@@ -20,4 +20,6 @@
 
 * 模板為傳送至聊天室的訊息
 
+[下載點](https://github.com/j835111/TwitchDonateToChatroom/releases)
+
 基於[TwitchLib](https://github.com/TwitchLib/TwitchLib)所實現的
