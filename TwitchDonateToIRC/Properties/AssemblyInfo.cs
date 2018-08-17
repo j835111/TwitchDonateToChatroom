@@ -9,7 +9,7 @@ using System.Windows;
 // 資訊。
 [assembly: AssemblyTitle("TwitchDonateToIRC")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyConfiguration("0.2")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TwitchDonateToIRC")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
