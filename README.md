@@ -14,7 +14,7 @@
 
 * 頻道ID為實況主的頻道
 
-* Twitch ID 這個其實可以隨便填
+* Twitch ID 填入帳號
 
 * Twitch OAuth 就按照網址來取得 ，注意要填入的是OAuth:後面的字串
 
