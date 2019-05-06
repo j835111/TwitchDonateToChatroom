@@ -12,7 +12,7 @@
 ![歐付寶](/Picture/2.png)
 歐付寶ID為網址中/Donate/後面的字串
 
-* 頻道ID為實況主的頻道
+* 頻道ID為實況主的帳號
 
 * Twitch ID 填入帳號
 
