@@ -56,7 +56,12 @@ namespace TwitchDonateToIRC
             }
         }
 
-        private void DonateProcess(List<Member> lists)
+        public void DonateProcess()
+        {
+
+        }
+
+        private void donateprocess(List<Member> lists)
         {
             foreach (var item in lists)
             {
@@ -79,7 +84,7 @@ namespace TwitchDonateToIRC
             sw.Close();
         }
     }
-    class Member
+    public class Member
     {
         public int donateid { get; set; }
         public string name { get; set; }

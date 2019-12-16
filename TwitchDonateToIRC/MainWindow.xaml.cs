@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using System.Timers;
 using System.Windows;
 using System.Windows.Documents;
@@ -13,6 +15,8 @@ namespace TwitchDonateToIRC
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ConcurrentQueue<Member> queue;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,13 +55,14 @@ namespace TwitchDonateToIRC
             {
                 OpayCheck opay = new OpayCheck(opayid.Text, username.Text, twitchoauth.Text, channelname.Text, messagetemplate.Text);
                 state.Text = "Twitch聊天室已連接...\n";
-                Timer timer = new Timer(5000)
+                System.Timers.Timer timer = new System.Timers.Timer(5000)
                 {
                     AutoReset = true,
                     Enabled = true
                 };
                 timer.Elapsed += opay.Timer_Elapsed;
                 state.Text += "歐付寶頁面擷取中...";
+                Thread thread = new Thread(opay.DonateProcess);
         }
             catch(Exception ex)
             {
