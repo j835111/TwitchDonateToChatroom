@@ -2,6 +2,7 @@
     x:Class="TwitchDonateToChatroom.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:TwitchDonateToChatroom">
+    xmlns:local="clr-namespace:TwitchDonateToChatroom"
+    StartupUri="Views/MainWindow.xaml">
     <Application.Resources />
 </Application>

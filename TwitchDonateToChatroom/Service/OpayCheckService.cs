@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using TwitchDonateToChatroom.Models;
+using TwitchDonateToChatroom.Service.Interface;
 
 namespace TwitchDonateToChatroom.Service
 {
-    public class OpayCheckService
+    public class OpayCheckService : IOpayCheckService
     {
         #region Constants
 
@@ -111,5 +112,5 @@ namespace TwitchDonateToChatroom.Service
 
         #endregion
     }
-    
+
 }

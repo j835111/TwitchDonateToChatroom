@@ -30,7 +30,7 @@ namespace TwitchDonateToChatroom.Views
         }
 
         //public static string 
-        private async System.Threading.Tasks.Task Button_ClickAsync(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (opayid.Text.Length < 1)
             {
@@ -61,7 +61,7 @@ namespace TwitchDonateToChatroom.Views
                     AutoReset = true,
                     Enabled = true
                 };
-                timer.Elapsed += await opay.Timer_ElapsedAsync;
+                //timer.Elapsed += await opay.Timer_ElapsedAsync;
                 state.Text += "歐付寶頁面擷取中...";
             }
             catch (Exception ex)

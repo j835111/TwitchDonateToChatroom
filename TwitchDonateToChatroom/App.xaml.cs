@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TwitchDonateToChatroom.Views;
 
 namespace TwitchDonateToChatroom
 {
@@ -14,10 +15,10 @@ namespace TwitchDonateToChatroom
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
+        private ServiceProvider _serviceProvider;
 
+        public App()
+        {
             var serviceCollection = new ServiceCollection();
 
             ConfigureServices(serviceCollection);
@@ -25,9 +26,10 @@ namespace TwitchDonateToChatroom
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }
 
-        private void ConfigureServices(ServiceCollection serviceCollection)
+        private void ConfigureServices(IServiceCollection services)
         {
-            throw new NotImplementedException();
+            services.AddSingleton(typeof(MainWindow));
+            //services.AddSingleton<>
         }
     }
 }
