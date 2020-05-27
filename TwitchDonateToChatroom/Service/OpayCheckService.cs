@@ -24,17 +24,17 @@ namespace TwitchDonateToChatroom.Service
 
         #region Fields
 
-        private readonly HttpClient httpClient = new HttpClient();
+        private readonly HttpClient _httpClient = new HttpClient();
 
-        private readonly TwitchIRCService irc;
+        private readonly TwitchIRCService _irc;
 
-        private readonly string id;
+        private readonly string _id;
 
-        private int DonatesFlag = 0;
+        private int _donatesFlag = 0;
 
-        private readonly string channelName;
+        private readonly string _channelName;
 
-        private readonly string messageTemplate;
+        private readonly string _messageTemplate;
 
         #endregion
 
@@ -42,24 +42,24 @@ namespace TwitchDonateToChatroom.Service
 
         public OpayCheckService(string opayid, string userName, string oauth, string channelName, string messageTemplate)
         {
-            this.id = opayid;
+            this._id = opayid;
 
-            this.channelName = channelName;
+            this._channelName = channelName;
 
-            this.messageTemplate = messageTemplate;
+            this._messageTemplate = messageTemplate;
 
-            irc = new TwitchIRCService(userName, oauth, channelName);
+            _irc = new TwitchIRCService(userName, oauth, channelName);
         }
 
         #endregion
 
         #region Events
 
-        public async Task Timer_ElapsedAsync(object sender, ElapsedEventArgs e)
+        public async Task Timer_ElapsedAsync()
         {
             try
             {
-                var response = await httpClient.PostAsync(url + id, null);
+                var response = await _httpClient.PostAsync(url + _id, null);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -89,11 +89,11 @@ namespace TwitchDonateToChatroom.Service
         {
             foreach (var item in lists)
             {
-                if (DonatesFlag < item.DonateId)
+                if (_donatesFlag < item.DonateId)
                 {
-                    irc.Send(channelName, messageTemplate.Replace("{name}", item.Name).Replace("{amount}", item.Amount.ToString()).Replace("{msg}", item.Msg));
+                    _irc.Send(_channelName, _messageTemplate.Replace("{name}", item.Name).Replace("{amount}", item.Amount.ToString()).Replace("{msg}", item.Msg));
                     //Log(item);
-                    DonatesFlag = item.DonateId;
+                    _donatesFlag = item.DonateId;
 
                     Thread.Sleep(500);
                 }

@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Documents;
 using TwitchDonateToChatroom.Models;
 using TwitchDonateToChatroom.Service;
+using TwitchDonateToChatroom.ViewModels;
 
 namespace TwitchDonateToChatroom.Views
 {
@@ -64,7 +65,7 @@ namespace TwitchDonateToChatroom.Views
                 //timer.Elapsed += await opay.Timer_ElapsedAsync;
                 state.Text += "歐付寶頁面擷取中...";
             }
-            catch (Exception ex)
+            catch (Exception  ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -116,6 +117,15 @@ namespace TwitchDonateToChatroom.Views
             }
             else
                 return new DataConfig(); 
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            MainWindowVM vm = DataContext as MainWindowVM;
+
+            vm.CTS.Cancel();
+
+            base.OnClosed(e);
         }
     }
 }

@@ -5,6 +5,6 @@ namespace TwitchDonateToChatroom.Service.Interface
 {
     public interface IOpayCheckService
     {
-        Task Timer_ElapsedAsync(object sender, ElapsedEventArgs e);
+        Task Timer_ElapsedAsync();
     }
 }
