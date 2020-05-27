@@ -2,11 +2,11 @@
 {
     public class DataConfig
     {
-        public string OpayID { get; set; }
+        public string OpayId { get; set; }
 
-        public string ChannelID { get; set; }
+        public string ChannelName { get; set; }
 
-        public string TwitchID { get; set; }
+        public string UserName { get; set; }
 
         public string TwitchOauth { get; set; }
 

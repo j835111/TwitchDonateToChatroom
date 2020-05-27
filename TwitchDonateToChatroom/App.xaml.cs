@@ -32,7 +32,7 @@ namespace TwitchDonateToChatroom
         {
             services.AddSingleton(typeof(MainWindow));
             services.AddSingleton<IOpayCheckService, OpayCheckService>();
-            //services.AddSingleton<>
+            services.AddSingleton<IConfigService, ConfigService>();
         }
     }
 }
