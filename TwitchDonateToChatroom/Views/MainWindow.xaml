@@ -5,21 +5,73 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TwitchDonateToChatroom.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:TwitchDonateToChatroom.ViewModels"
     Title="DonateToTwitchChatroom"
-    Width="460"
-    Height="425"
+    Width="596"
+    Height="973"
+    WindowStyle="None"
     mc:Ignorable="d">
-    <Grid Margin="0,0,0,0">
-        <TextBox
-            Name="opayid"
-            Width="262"
-            Height="30"
-            Margin="156,26,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="16"
-            RenderTransformOrigin="0.496,0.522"
-            TextWrapping="Wrap" />
+
+    <Window.DataContext>
+        <viewModels:MainWindowVM />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style x:Key="titleLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <!--<Setter Property="FontFamily" Value=""/>-->
+            <Setter Property="Height" Value="22" />
+            <Setter Property="Foreground" Value="#D9D9D9" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Visibility" Value="Collapsed" />
+            <Setter Property="Foreground" Value="White" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="TextBoxTemplate1" TargetType="{x:Type TextBox}">
+            <Grid />
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Rectangle
+            x:Name="rectangle"
+            Width="596"
+            Height="594"
+            Margin="0,325,0,54" />
+        <Border CornerRadius="2">
+            <Grid
+                Width="469"
+                Height="506"
+                Margin="62,262"
+                Background="#343539">
+                <Label
+                    Margin="20,15.24,374,286"
+                    Content="連結資訊"
+                    Style="{StaticResource titleLabel}" />
+                <Rectangle
+                    Height="2"
+                    Margin="0,47"
+                    Fill="#494949" />
+                <TextBox
+                    Name="opayid"
+                    Width="307"
+                    Height="27"
+                    Margin="99,85"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    FontSize="16"
+                    Text="歐付寶驗證碼"
+                    TextWrapping="Wrap" />
+            </Grid>
+        </Border>
+
         <Label
             Width="122"
             Height="30"
@@ -47,6 +99,7 @@
             VerticalAlignment="Top"
             FontSize="16"
             RenderTransformOrigin="1.366,0.522"
+            Template="{DynamicResource TextBoxTemplate1}"
             TextWrapping="Wrap" />
         <Button
             Width="84"
@@ -54,7 +107,6 @@
             Margin="112,293,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Click="Button_Click"
             Content="確定"
             FontSize="16"
             RenderTransformOrigin="2.022,11.638" />
@@ -139,7 +191,7 @@
             Margin="264,293,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Click="Button_Click_1"
+            Command="{Binding SaveCommand}"
             Content="儲存"
             FontSize="16"
             RenderTransformOrigin="2.022,11.638" />

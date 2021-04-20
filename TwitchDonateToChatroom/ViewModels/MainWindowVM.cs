@@ -115,10 +115,7 @@ namespace TwitchDonateToChatroom.ViewModels
         public string Status
         {
             get => _status;
-            set
-            {
-                SetProperty(ref _status, value);
-            }
+            set => SetProperty(ref _status, value);
         }
 
         public ICommand StartCommand
@@ -149,6 +146,8 @@ namespace TwitchDonateToChatroom.ViewModels
         public CancellationTokenSource CTS { get; } = new CancellationTokenSource();
 
         #endregion
+
+        #region Methods
 
         private void ShowMessageBox(string text)
         {
@@ -201,5 +200,7 @@ namespace TwitchDonateToChatroom.ViewModels
                 MessageTemplate = _messageTamplate
             });
         }
+
+        #endregion
     }
 }
