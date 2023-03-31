@@ -15,7 +15,6 @@ namespace TwitchDonateToIRC
         public string ChannelID { get; set; }
         public string TwitchID { get; set; }
         public string TwitchOauth { get; set; }
-        public string MessageTemplate { get; set; }
 
         public void Dispose()
         {

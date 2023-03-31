@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Timers;
 using System.Windows;
@@ -16,15 +17,14 @@ namespace TwitchDonateToIRC
         TwitchIRC irc;
         private string url = "https://payment.opay.tw/Broadcaster/CheckDonate/";
         private string id;
-        private int DonatesFlag { get; set; } = 0;
+        private int DonatesFlag = 0;
         private string channelname;
         private string MessageTemplate;
 
-        public OpayCheck(string opayid, string username, string oauth, string channelname,string messagetemplate)
+        public OpayCheck(string opayid, string username, string oauth, string channelname)
         {
             this.id = opayid;
             this.channelname = channelname;
-            this.MessageTemplate = messagetemplate;
             irc = new TwitchIRC(username, oauth, channelname);
         }
 
@@ -32,6 +32,7 @@ namespace TwitchDonateToIRC
         {
             try
             {
+                
                 request = (HttpWebRequest)WebRequest.Create(url + id);
                 request.Accept = "application/json";
                 request.ContentType = "application/json; charset=utf-8";
@@ -86,4 +87,6 @@ namespace TwitchDonateToIRC
         public int amount { get; set; }
         public string msg { get; set; }
     }
+
+
 }
